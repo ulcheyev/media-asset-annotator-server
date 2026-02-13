@@ -7,8 +7,7 @@ on:
       - main
 
 jobs:
-
-  build-and-push:
+  build-and-publish:
     runs-on: ubuntu-latest
 
     steps:
@@ -18,19 +17,16 @@ jobs:
       - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
-          java-version: '21'
-          distribution: 'temurin'
+          distribution: temurin
+          java-version: 21
+          cache: maven
 
-      - name: Log in to Docker Hub
-        run: echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKERHUB_USER }}" --password-stdin
-
-      - name: Build and push Docker image with maven spring boot
+      - name: Build and publish image
         run: |
-          mvn spring-boot:build-image \
-              -DskipTests \
-              -Dspring-boot.build-image.publish=true \
-              -Ddocker.publishRegistry.username=${{ secrets.DOCKERHUB_USER }} \
-              -Ddocker.publishRegistry.password=${{ secrets.DOCKERHUB_PASSWORD }} \
-              -Ddocker.publishRegistry.url=docker.io \
-              -Dspring-boot.build-image.image=${{ secrets.DOCKERHUB_USER }}/media-asset-annotator:latest 
-
+          mvn clean spring-boot:build-image \
+            -DskipTests \
+            -Dspring-boot.build-image.publish=true \
+            -Dspring-boot.build-image.image=${{ secrets.DOCKERHUB_USER }}/media-asset-annotator:latest
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKERHUB_USER }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}

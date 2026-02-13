@@ -78,6 +78,8 @@
     <build>
         <finalName>${project.artifactId}</finalName>
         <plugins>
+
+            <!-- Spring Boot plugin -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
@@ -89,6 +91,8 @@
                     </image>
                 </configuration>
             </plugin>
+
+            <!-- Java compiler -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -102,22 +106,9 @@
                             <version>${lombok.version}</version>
                         </path>
                     </annotationProcessorPaths>
-                    <docker>
-                        <publishRegistry>
-                            <url>${docker.publishRegistry.url}</url>
-                            <username>${docker.publishRegistry.username}</username>
-                            <password>${docker.publishRegistry.password}</password>
-                        </publishRegistry>
-                    </docker>
-                    <image>
-                        <name>${docker.registry}/${project.artifactId}:latest</name>
-                    </image>
-                    <layers>
-                        <enabled>true</enabled>
-                    </layers>
                 </configuration>
             </plugin>
+
         </plugins>
     </build>
-
 </project>
