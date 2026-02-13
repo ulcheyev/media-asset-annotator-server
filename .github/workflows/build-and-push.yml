@@ -1,0 +1,36 @@
+name: Build and Publish
+
+on:
+  push:
+    branches:
+      - dev/release-test
+      - main
+
+jobs:
+
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: Log in to Docker Hub
+        run: echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKERHUB_USER }}" --password-stdin
+
+      - name: Build and push Docker image with maven spring boot
+        run: |
+          mvn spring-boot:build-image \
+              -DskipTests \
+              -Dspring-boot.build-image.publish=true \
+              -Ddocker.publishRegistry.username=${{ secrets.DOCKERHUB_USER }} \
+              -Ddocker.publishRegistry.password=${{ secrets.DOCKERHUB_PASSWORD }} \
+              -Ddocker.publishRegistry.url=docker.io \
+              -Dspring-boot.build-image.image=${{ secrets.DOCKERHUB_USER }}/media-asset-annotator:latest 
+
