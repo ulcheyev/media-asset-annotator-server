@@ -17,7 +17,8 @@ replay_pid*
 ######################################
 
 # Maven target directory
-/target/
+target/
+/target
 
 # Maven wrapper logs
 .mvn/wrapper/maven-wrapper.jar
