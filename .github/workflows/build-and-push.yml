@@ -21,17 +21,13 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
 
-      - name: Log in to Docker Hub
-        run: echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKERHUB_USER }}" --password-stdin
-
-      - name: Build and push Docker image with maven spring boot
+      - name: Build and publish image
         run: |
-          mvn spring-boot:build-image \
-              -DskipTests \
-              -Dspring-boot.build-image.publish=true \
-              -Ddocker.publishRegistry.username=${{ secrets.DOCKERHUB_USER }} \
-              -Ddocker.publishRegistry.password=${{ secrets.DOCKERHUB_PASSWORD }} \
-              -Ddocker.publishRegistry.url=docker.io \
-              -Ddocker.registry=${{ secrets.DOCKERHUB_USER }} \
-              -Dspring-boot.build-image.image=${{ secrets.DOCKERHUB_USER }}/media-asset-annotator:latest 
+          mvn -B clean spring-boot:build-image \
+            -DskipTests \
+            -Dspring-boot.build-image.imageName=${{ secrets.DOCKERHUB_USER }}/media-asset-annotator-server:latest \
+            -Dspring-boot.build-image.publish=true \
+            -Ddocker.publishRegistry.username=${{ secrets.DOCKERHUB_USER }} \
+            -Ddocker.publishRegistry.password=${{ secrets.DOCKERHUB_PASSWORD }}
+      
 
