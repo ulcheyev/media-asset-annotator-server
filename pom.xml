@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.3.13</version>
+        <version>4.0.2</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>cz.cvut.fel</groupId>
@@ -73,29 +73,6 @@
     <build>
         <finalName>${project.artifactId}</finalName>
         <plugins>
-
-            <!-- Spring Boot plugin -->
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <image>
-                        <name>${docker.image.name}</name>
-                        <publish>true</publish>
-                        <env>
-                            <BP_JVM_VERSION>${java.version}</BP_JVM_VERSION>
-                        </env>
-                    </image>
-                    <docker>
-                        <publishRegistry>
-                            <username>${docker.publishRegistry.username}</username>
-                            <password>${docker.publishRegistry.password}</password>
-                        </publishRegistry>
-                    </docker>
-                </configuration>
-
-            </plugin>
-
 
             <!-- Java compiler -->
             <plugin>
