@@ -1,12 +1,12 @@
 package cz.cvut.fel.annotator.client;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import cz.cvut.fel.annotator.shared.exception.MediaCmsException;
 import cz.cvut.fel.annotator.shared.exception.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
-import tools.jackson.databind.ObjectMapper;
 
 @Component
 @RequiredArgsConstructor
