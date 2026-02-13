@@ -30,6 +30,7 @@ public class Vocabulary {
     public static final String hasMediaType = ANNOTATOR_MEDIA_URI_BASE + "has-media-type";
     public static final String hasAnnotation = ANNOTATOR_MEDIA_URI_BASE + "has-annotation";
     public static final String hasMediaContent = URI_BASE + "has-media-content";
+
     private Vocabulary() {
     }
 

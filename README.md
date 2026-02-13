@@ -5,3 +5,5 @@ This backed it coupled to [media cms]().
 
 ## Technology Stack
 ## Setup
+
+build docker file locally by spring boot 

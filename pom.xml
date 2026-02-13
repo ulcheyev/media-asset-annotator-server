@@ -10,10 +10,11 @@
     </parent>
     <groupId>cz.cvut.fel</groupId>
     <artifactId>media-asset-annotator-server</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
     <name>media-asset-annotator-server</name>
     <description>media-asset-annotator-server</description>
     <url/>
+
 
     <properties>
         <java.version>21</java.version>
@@ -75,17 +76,17 @@
     </dependencies>
 
     <build>
+        <finalName>${project.artifactId}</finalName>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <annotationProcessorPaths>
-                        <path>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </path>
-                    </annotationProcessorPaths>
+                    <image>
+                        <env>
+                            <BP_JVM_VERSION>${java.version}</BP_JVM_VERSION>
+                        </env>
+                    </image>
                 </configuration>
             </plugin>
             <plugin>
@@ -101,6 +102,19 @@
                             <version>${lombok.version}</version>
                         </path>
                     </annotationProcessorPaths>
+                    <docker>
+                        <publishRegistry>
+                            <url>${docker.publishRegistry.url}</url>
+                            <username>${docker.publishRegistry.username}</username>
+                            <password>${docker.publishRegistry.password}</password>
+                        </publishRegistry>
+                    </docker>
+                    <image>
+                        <name>${docker.registry}/${project.artifactId}:latest</name>
+                    </image>
+                    <layers>
+                        <enabled>true</enabled>
+                    </layers>
                 </configuration>
             </plugin>
         </plugins>
