@@ -35,4 +35,3 @@ jobs:
           push: true
           tags: |
             ${{ secrets.DOCKERHUB_USER }}/media-asset-annotator-server:latest
-            ${{ secrets.DOCKERHUB_USER }}/media-asset-annotator-server:${{ github.sha }}
