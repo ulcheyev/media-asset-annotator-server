@@ -25,6 +25,7 @@ jobs:
         run: |
           mvn -B clean spring-boot:build-image \
             -DskipTests \
+            -Dmaven.test.skip=true \
             -Dspring-boot.build-image.imageName=${{ secrets.DOCKERHUB_USER }}/media-asset-annotator-server:latest \
             -Dspring-boot.build-image.publish=true \
             -Ddocker.publishRegistry.username=${{ secrets.DOCKERHUB_USER }} \
