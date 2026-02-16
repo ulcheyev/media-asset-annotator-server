@@ -7,21 +7,24 @@ import org.springframework.stereotype.Component;
 public class MediaCmsUrlResolver {
 
     @Value("${mediacms.api-base}")
-    private String MEDIA_CMS_API_BASE;
+    private String apiBase;
 
-    @Value("${mediacms.base-url}")
-    private String MEDIA_CMS_BASE_URL;
+    @Value("${mediacms.internal-base-url}")
+    private String internalBaseUrl;
 
-    public String getOriginalMediaUrlWithAbsolutPath(String originalMediaUrl) {
+    @Value("${mediacms.public-base-url}")
+    private String publicBaseUrl;
+
+    public String getOriginalMediaUrlWithAbsolutePath(String originalMediaUrl) {
         if (originalMediaUrl.startsWith("http")) {
             return originalMediaUrl;
         }
 
-        return MEDIA_CMS_BASE_URL + normalize(originalMediaUrl);
+        return publicBaseUrl + normalize(originalMediaUrl);
     }
 
     public String mediaCmsApiUrlFromPlainId(String category, String id) {
-        return MEDIA_CMS_API_BASE + "/" + normalize(category) + "/" + id;
+        return internalBaseUrl + apiBase + "/" + normalize(category) + "/" + id;
     }
 
     private String normalize(String value) {
@@ -31,3 +34,4 @@ public class MediaCmsUrlResolver {
         return value;
     }
 }
+

@@ -5,7 +5,7 @@ spring:
 server:
   port: ${SERVER_PORT:5040}
   servlet:
-    context-path: ${SERVER_CONTEXT_PATH:/annotator-server/}
+    context-path: ${SERVER_CONTEXT_PATH:/annotator-server/api}
   shutdown: graceful
 
 management:
@@ -28,7 +28,8 @@ logging:
     console: ${LOG_PATTERN_CONSOLE:%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n}
 
 mediacms:
-  base-url: ${MEDIA_CMS_BASE_URL:http://localhost:2080}
+  internal-base-url: ${MEDIA_CMS_INTERNAL_BASE_URL:http://localhost:2080}
+  public-base-url: ${MEDIA_CMS_PUBLIC_BASE_URL:http://localhost:2080}
   api-base: ${MEDIA_CMS_API_BASE:/api/v1}
 
 persistence:
