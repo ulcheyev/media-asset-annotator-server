@@ -11,10 +11,22 @@
     <groupId>cz.cvut.fel</groupId>
     <artifactId>media-asset-annotator-server</artifactId>
     <version>1.0.0</version>
+    <packaging>jar</packaging>
     <name>media-asset-annotator-server</name>
     <description>media-asset-annotator-server</description>
     <url/>
 
+    <developers>
+        <developer>
+            <id>ulcheyev</id>
+            <name>Yevgeniy Ulchenkov</name>
+            <email>ulchenkov2001@gmail.com</email>
+            <roles>
+                <role>Architect</role>
+                <role>Developer</role>
+            </roles>
+        </developer>
+    </developers>
 
     <properties>
         <java.version>21</java.version>
@@ -73,6 +85,11 @@
     <build>
         <finalName>${project.artifactId}</finalName>
         <plugins>
+            <!-- Spring Packaging -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
 
             <!-- Java compiler -->
             <plugin>
