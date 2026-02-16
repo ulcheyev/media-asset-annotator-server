@@ -1,23 +1,17 @@
 # Media Asset Annotator Server
 
-Backend module for the [Media Asset Annotator](https://github.com/ulcheyev/media-asset-annotator) frontend.
+Backend module for the [Media Asset Annotator](https://github.com/ulcheyev/media-asset-annotator) frontend. This service provides:
 
-This service provides:
-
-- Integration with [MediaCMS](https://mediacms.io/)
-- Integration with [Record Manager]((https://github.com/kbss-cvut/record-manager-ui/tree/main)) related tools**
+- Integration with [MediaCMS](https://mediacms.io/) (tightly integrated with [MediaCMS API](https://demo.mediacms.io/swagger/))
 - Annotation persistence using **GraphDB**
-
-The backend is tightly integrated with [MediaCMS API](https://demo.mediacms.io/swagger/).
+- Integration with tools related to [Record Manager](https://github.com/kbss-cvut/record-manager-ui/tree/main)
 
 ---
-
 ## Technology Stack
 
 - Java 21
 - Spring Boot 4.0.2
-- JOPA
-- WebClient (REST integration)
+- JOPA 2.8.1
 
 ---
 
@@ -36,7 +30,7 @@ mvn spring-boot:run
 
 By default the server runs on http://localhost:5040/annotator-server/api
 
-
+---
 ## 🐳 Docker
 
 The application is packaged as an executable Spring Boot fat jar.  To build Docker image locally:
