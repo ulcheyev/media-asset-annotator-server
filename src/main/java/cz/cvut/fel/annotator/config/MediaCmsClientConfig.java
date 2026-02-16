@@ -8,7 +8,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 @Configuration
 public class MediaCmsClientConfig {
 
-    @Value("${mediacms.base-url}")
+    @Value("${mediacms.internal-base-url}")
     private String baseUrl;
 
     @Bean

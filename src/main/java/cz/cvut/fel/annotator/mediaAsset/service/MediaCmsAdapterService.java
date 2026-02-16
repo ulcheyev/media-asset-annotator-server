@@ -46,7 +46,7 @@ public class MediaCmsAdapterService {
                         MediaCmsMediaDto mediaDto =
                                 mediaCmsClient.getMediaByUrl(media.api_url());
 
-                        String src = urlResolver.getOriginalMediaUrlWithAbsolutPath(
+                        String src = urlResolver.getOriginalMediaUrlWithAbsolutePath(
                                 mediaDto.originalMediaUrl()
                         );
 
@@ -69,7 +69,7 @@ public class MediaCmsAdapterService {
         try {
             MediaCmsMediaDto media = mediaCmsClient.getMediaById(id);
 
-            String src = urlResolver.getOriginalMediaUrlWithAbsolutPath(
+            String src = urlResolver.getOriginalMediaUrlWithAbsolutePath(
                     media.originalMediaUrl()
             );
 
