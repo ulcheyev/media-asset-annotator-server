@@ -6,6 +6,8 @@ Backend module for the [Media Asset Annotator](https://github.com/ulcheyev/media
 - Annotation persistence using **GraphDB**
 - Integration with tools related to [Record Manager](https://github.com/kbss-cvut/record-manager-ui/tree/main)
 
+![Build (main)](https://github.com/ulcheyev/media-asset-annotator-server/actions/workflows/build-and-push.yml/badge.svg?branch=main)
+
 ---
 ## Technology Stack
 
